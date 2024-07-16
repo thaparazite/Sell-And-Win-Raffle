@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="loading-view" stylesheets="@../stylesheets/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="raffle.controllers.LoadingController">
+     <children>
+         <ImageView fx:id="logoImageView" fitHeight="600.0" fitWidth="800" nodeOrientation="INHERIT">
+             <image>
+                 <Image url="@../icons/logo.png" />
+             </image>
+         </ImageView>
+         <ProgressBar fx:id="loadingProgress" layoutX="250.0" layoutY="561.0" prefWidth="300" styleClass="progress-bar" />
+     </children>
+ </AnchorPane>
