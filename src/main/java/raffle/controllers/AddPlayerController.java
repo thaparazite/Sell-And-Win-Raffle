@@ -132,6 +132,9 @@ public class AddPlayerController {
       playerList = FXCollections.observableArrayList();
       playerTable.setItems(playerList);
 
+      // Enable multiple row selection
+      playerTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
       // Adjust columns dynamically with the table's width
       Platform.runLater(() -> {
          Stage stage = (Stage) playerTable.getScene().getWindow();
@@ -369,12 +372,14 @@ public class AddPlayerController {
          return; // Return early, do not proceed with adding the player
       }
 
-      Player selectedPlayer = playerTable.getSelectionModel().getSelectedItem();
-      if (selectedPlayer != null) {
+      // Get the selected players
+      ObservableList<Player> selectedPlayers = playerTable.getSelectionModel().getSelectedItems();
+      if (! selectedPlayers.isEmpty()) {
 
+         // Show a confirmation dialog
          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-         alert.setTitle("Delete Player");
-         alert.setHeaderText("Are you sure you want to delete the player ?");
+         alert.setTitle("Delete Players");
+         alert.setHeaderText("Are you sure you want to delete the selected players?");
          alert.setContentText("Choose your option:");
 
          ButtonType buttonTypeOne = new ButtonType("Yes");
@@ -382,38 +387,44 @@ public class AddPlayerController {
 
          alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
 
+         // Process the user's choice
          Optional<ButtonType> result = alert.showAndWait();
          if (result.isPresent() && result.get() == buttonTypeOne) {
 
-            int removedID = selectedPlayer.getId();
-            String name = selectedPlayer.getName();
-            String phone = selectedPlayer.getPhoneNumber();
+            for (Player selectedPlayer : selectedPlayers) {
+               int removedID = selectedPlayer.getId();
+               String name = selectedPlayer.getName();
+               String phone = selectedPlayer.getPhoneNumber();
 
-            // Find all entries with the same name and phone number
-            List<Player> relatedPlayers = playerList.stream()
-                                                    .filter(player -> player.getName().equalsIgnoreCase(name) && player.getPhoneNumber().equals(phone))
-                                                    .toList();
+               // Find all entries with the same name and phone number
+               List<Player> relatedPlayers = playerList.stream()
+                                                       .filter(player -> player.getName().equalsIgnoreCase(name) && player.getPhoneNumber().equals(phone))
+                                                       .toList();
 
-            // Calculate the total number of tickets remaining after removing the selected player
-            int remainingTickets = relatedPlayers.size();
+               // Calculate the total number of tickets remaining after removing the selected player
+               int remainingTickets = relatedPlayers.size() - 1;
 
-            // Update the number of tickets for other entries with the same name and phone number
-            relatedPlayers.forEach(player -> player.setNumberOfTickets(remainingTickets));
+               // Update the number of tickets for other entries with the same name and phone number
+               relatedPlayers.forEach(player -> player.setNumberOfTickets(remainingTickets));
 
-            // Update the selected player's entry
-            selectedPlayer.setName("");
-            selectedPlayer.setPhoneNumber("");
-            selectedPlayer.setNumberOfTickets(0);
+               // Update the selected player's entry
+               selectedPlayer.setName("");
+               selectedPlayer.setPhoneNumber("");
+               selectedPlayer.setNumberOfTickets(0);
 
-            availableIDs.add(removedID);
+               availableIDs.add(removedID);
+            }// end of for loop
+
+            // Sort the available IDs
             Collections.sort(availableIDs);
+            // Write the updated player list to the CSV file
             PlayerDataReaderAndWriter.writePlayersToCSV(new ArrayList<>(playerList), recordsDirectory.resolve(itemTitle + ".csv"));
 
-            showAlert(Alert.AlertType.CONFIRMATION, "Player Removed", "Player has been removed successfully!");
+            showAlert(Alert.AlertType.CONFIRMATION, "Players Removed", "Selected players have been removed successfully!");
             handleRefresh();
-         }
+         }// end of if block
       } else {
-         showAlert(Alert.AlertType.INFORMATION, "No Selection", "No player selected for removal !");
+         showAlert(Alert.AlertType.INFORMATION, "No Selection", "No players selected for removal!");
       }// end of if-else block
    }// end of handleRemovePlayer method
 
