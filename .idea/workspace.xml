@@ -31,6 +31,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/thaparazite/Sell_And_Win_Raffle.git",
+    "accountId": "df675535-6318-4844-9206-c439367fc83b"
+  }
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -177,7 +183,7 @@
       <workItem from="1721132547973" duration="4462000" />
       <workItem from="1721153535696" duration="1237000" />
       <workItem from="1721164417442" duration="1879000" />
-      <workItem from="1721168115934" duration="6643000" />
+      <workItem from="1721168115934" duration="7060000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -203,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721214973166</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit">
+      <option name="closed" value="true" />
+      <created>1721215214842</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1721215214842</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
