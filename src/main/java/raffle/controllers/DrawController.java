@@ -41,8 +41,10 @@ public class DrawController {
 
    @FXML
    private void initialize() {
-      addTooltip(checkPlayerStatus, "Check the player's status !");
-      addTooltip(startStopButton, "Start or stop the number generation !");
+      addTooltip(checkPlayerStatus, "Check Player's Status");
+      addTooltip(startStopButton, "Start the Number Generation.\nStop the Number Generation to Pick a Winner");
+      addTooltip(generatedNumber, "Last Generated Number");
+      addTooltip(winerLabel, "Winner of the Draw");
    }// end of initialize method
 
    @FXML

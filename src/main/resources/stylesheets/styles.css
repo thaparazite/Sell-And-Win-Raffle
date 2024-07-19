@@ -45,6 +45,19 @@
     -fx-padding: 2;
 }
 
+.tooltip {
+    /* style the tooltip */
+    -fx-font-size: 25px;
+    -fx-font-family: "Arial Unicode MS";
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+    -fx-border-color:  #9c7945;
+    -fx-background-color: black;
+    -fx-background-radius: 10;
+    -fx-text-fill: #9c7945;
+
+}
+
 .button:hover {
     /* style the button when hovered */
     -fx-background-color: #34495e;

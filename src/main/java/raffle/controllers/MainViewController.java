@@ -130,10 +130,12 @@ public class MainViewController {
       });// end of priceColumn.setCellFactory method
 
       // Add tooltips to the buttons
-      addTooltip(addItemButton, "Click here to add a new item to the raffle");
-      addTooltip(deleteItemButton, "Click here to delete the selected item from the raffle");
-      addTooltip(drawButton, "Click here to draw a winner");
-      addTooltip(refreshListButton, "Click here to refresh the list of items");
+      addTooltip(addItemButton, "Add a New Item to the Raffle List");
+      addTooltip(deleteItemButton, "Delete the Selected Item from the Raffle List");
+      addTooltip(drawButton, "Draw a winner");
+      addTooltip(refreshListButton, "Refresh the List of Items");
+      addTooltip(buyTicketsButton, "Buy Tickets for the Selected Item");
+      addTooltip(viewItemButton, "View Images and Description of the Selected Item");
 
       loadItemsFromCSV();
 

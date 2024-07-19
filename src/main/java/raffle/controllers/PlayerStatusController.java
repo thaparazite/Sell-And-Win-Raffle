@@ -30,9 +30,9 @@ public class PlayerStatusController {
    @FXML
    private void initialize() {
       // tooltip for the checkPlayerStatus button
-      addTooltip(checkPlayerStatus, "Check the player's status");
-      addTooltip(playerInput, "Enter the player's name, phone number, or ID!");
-      addTooltip(displayPlayerStatus, "Player's status will be displayed here!");
+      addTooltip(checkPlayerStatus, "Check the Player's Status");
+      addTooltip(playerInput, "Enter Player's Name, Phone Number, or ID!");
+      addTooltip(displayPlayerStatus, "Player's Status Will be Displayed Here!");
    }//end of initialize method
 
    @FXML

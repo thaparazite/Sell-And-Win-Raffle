@@ -2,6 +2,7 @@ package raffle.controllers;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -57,20 +58,31 @@ public class AddPlayerController {
    @FXML
    private void initialize() {
       // Add tooltips to the controls
-      addTooltip(playerName, "Enter the player's name");
-      addTooltip(phoneNumber, "Enter the player's phone number");
-      addTooltip(numberOfTickets, "Enter the number of tickets the player wants to buy");
-      addTooltip(ticketsLeft, "Number of tickets left");
-      addTooltip(addPlayerButton, "Click here to add the player");
-      addTooltip(removePlayerButton, "Click here to remove the player");
-      addTooltip(clearFieldsButton, "Click here to clear all fields");
-      addTooltip(refreshButton, "Click here to refresh the player list");
+      addTooltip(playerName, "Enter Player's Name");
+      addTooltip(phoneNumber, "Enter Player's Phone Number");
+      addTooltip(numberOfTickets, "Enter the Number of Tickets a Player Wants to Buy");
+      addTooltip(ticketsLeft, "Number of Tickets Left");
+      addTooltip(addPlayerButton, "Add Player to the List");
+      addTooltip(clearFieldsButton, "Clear all Fields");
+      addTooltip(refreshButton, "Refresh the List");
+      addTooltip(removePlayerButton, "Delete the Record of the Selected Player");
 
       // Initialize the player table
       IDColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
       nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
       phoneNumberColumn.setCellValueFactory(cellData -> cellData.getValue().phoneNumberProperty());
       numberOfTicketsColumn.setCellValueFactory(cellData -> cellData.getValue().numberOfTicketsProperty().asObject());
+
+      // Add a listener to the selection model of the playerTable
+      playerTable.getSelectionModel().getSelectedItems().addListener((ListChangeListener.Change<? extends Player> change) -> {
+         if (playerTable.getSelectionModel().getSelectedItems().size() > 1) {
+            removePlayerButton.setText("Delete Records");
+            addTooltip(removePlayerButton, "Delete the Records of the Selected Player/s");
+         } else {
+            removePlayerButton.setText("Delete Record");
+            addTooltip(removePlayerButton, "Delete the Record of the Selected Player");
+         }// end of if-else block
+      });
 
       // Customize the display of the IDColumn
       IDColumn.setCellFactory(tc -> new TableCell<>() {

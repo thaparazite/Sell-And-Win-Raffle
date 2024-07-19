@@ -39,7 +39,8 @@ public class ViewItemController {
 
       addTooltip(prevButton, "Previous Image");
       addTooltip(nextButton, "Next Image");
-
+      addTooltip(itemTitleLabel, "Title of the Item");
+      addTooltip(itemDescriptionLabel, "Description of the Item");
    }// end of initialize method
 
    // Method to set the item

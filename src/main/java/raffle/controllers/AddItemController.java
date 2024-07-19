@@ -44,13 +44,14 @@ public class AddItemController {
    @FXML
    public void initialize() {
       // Add tooltips to the controls
-      addTooltip(titleTextField, "Enter the title of the item");
-      addTooltip(descriptionTextField, "Enter the description of the item");
-      addTooltip(numberOfTicketsTextField, "Enter the number of tickets available for the item");
-      addTooltip(ticketPriceTextField, "Enter the price of each ticket for the item");
-      addTooltip(addDDefaultImageButton, "Click here to add an image for the item");
-      addTooltip(addItemButton, "Click here to add the item to the raffle");
-      addTooltip(clearFieldsButton, "Click here to clear all fields");
+      addTooltip(titleTextField, "Enter the Title of the Item");
+      addTooltip(descriptionTextField, "Enter the Description of the Item");
+      addTooltip(numberOfTicketsTextField, "Enter the Number of Tickets Available for the Item");
+      addTooltip(ticketPriceTextField, "Enter the Price of Each Ticket for the Item");
+      addTooltip(addDDefaultImageButton, "Add a Default Image for the Item.\nWhich will be Displayed in the Main View");
+      addTooltip(addItemButton, "Add the Item to the Raffle List");
+      addTooltip(clearFieldsButton, "Clear all fields");
+
    }// end of initialize method
 
    @FXML
